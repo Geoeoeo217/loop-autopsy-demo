@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="assets/layout/demo.css">
 <script src="assets/backgrounds/backgrounds.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
-<link rel="stylesheet" href="live/live.css?v=20">
+<link rel="stylesheet" href="live/live.css?v=21">
 <!-- page CSS: only what sits inside a visual, and one --p-h per card group -->
 <style>
   /* hero collage: the note card and the window's row columns (from hero-collage.html) */
@@ -259,6 +259,10 @@ round  count (same)
           <button class="pg__chip" type="button" data-example="grow" aria-pressed="false">Growing list</button>
           <button class="pg__chip" type="button" data-example="wrong" aria-pressed="false">Wrong direction</button>
           <button class="pg__chip" type="button" data-example="recursion" aria-pressed="false">Recursion</button>
+          <button class="pg__chip" type="button" data-example="cycle" aria-pressed="false">Cycle</button>
+          <button class="pg__chip" type="button" data-example="endless" aria-pressed="false">Endless iterator</button>
+          <button class="pg__chip" type="button" data-example="after" aria-pressed="false">Update after the loop</button>
+          <button class="pg__chip" type="button" data-example="whiletrue" aria-pressed="false">while True</button>
           <button class="pg__chip" type="button" data-example="correct" aria-pressed="false">Correct loop</button>
         </div>
         <div class="pg__grid">
@@ -354,6 +358,18 @@ call  n (same)
     </div>
   </section>
 
+  <!-- FEATURES: the complete list -->
+  <section class="section ground-surface" id="features" aria-labelledby="features-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <h2 id="features-h" class="span-6">Everything loop-autopsy does</h2>
+        <p class="span-6 start-7">Every feature of version 0.4.0. All of them run in the <a class="link" href="lite/notebooks/index.html?path=loop-autopsy-all-features.ipynb" target="_blank" rel="noopener">ready-to-run notebook</a>, one cell each.</p>
+      </div>
+      <div class="feat-grid"><div class="feat"><h3>Stops the loop</h3><ul><li><b>Stuck loop</b> nothing changes, 3 rounds</li><li><b>Cycle</b> values go round in a circle</li><li><b>Wrong direction</b> moving away from the goal</li><li><b>Jumped over</b> x != 10 when x skips 10</li><li><b>Growing list</b> appending to the list it reads</li><li><b>Never-ending iterator</b> stopped before it starts</li><li><b>Runaway recursion</b> first and last calls</li><li><b>Memory</b> stops at 85% of the limit</li></ul></div><div class="feat"><h3>Time</h3><ul><li><b>Early estimate</b> a slow loop is told how long it needs</li><li><b>Time limit</b> anything else stops at 60 s</li><li><b>Watchdog</b> a round stuck in sleep or a network call</li></ul></div><div class="feat"><h3>Hints from your code</h3><ul><li><b>Update after the loop</b> “did you mean to indent it?”</li><li><b>Update in a dead if</b> names the condition that is always False</li><li><b>while True: with no way out</b> a note as soon as it starts</li><li><b>Bare except:</b> warns that it also catches ■</li></ul></div><div class="feat"><h3>Helpers</h3><ul><li><b>Report</b> the line, the replay table and a hint</li><li><b>Press ■ yourself</b> you still get the replay table</li><li><b>Cell health bar</b> time, memory and loops per cell</li><li><b>Output guard</b> mutes a cell after 1,000 lines</li><li><b>Session summary</b> the heaviest cells, worst first</li></ul></div><div class="feat"><h3>Commands</h3><ul><li><b>%autopsy</b> status and settings</li><li><b>on / off</b> start or stop watching</li><li><b>last</b> show the last report again</li><li><b>config / reset</b> change or restore a setting</li><li><b>heatmap / summary / memory</b></li><li><b>%%autopsy off</b> skip one cell</li></ul></div><div class="feat"><h3>Optional extensions</h3><ul><li><b>%%growthcheck</b> preview a growing list</li><li><b>%growthdiff</b> which variables grew</li><li><b>%memaliases, %memparts</b> who holds a big object</li><li><b>%growthtrace</b> where memory is allocated</li><li><b>Extras</b> English, Indonesian and Chinese labels, sparklines, export, themes</li></ul></div></div>
+      <p class="feat-note">It watches <code>while</code> and <code>for</code> loops, <code>async</code> loops, comprehensions, <code>list()</code>, <code>sum()</code>, <code>max()</code> and similar calls, and scripts run with <code>%run</code>. Cells using <code>%timeit</code> are left alone.</p>
+    </div>
+  </section>
+
   <!-- SPLIT-TEXT-LEFT: install, beside the real test run -->
   <section class="section" id="install" aria-labelledby="install-h">
     <div class="wrap">
@@ -368,7 +384,7 @@ call  n (same)
             <li><span class="rows__name">Cost per round</span><span class="rows__value">about 0.1 to 0.3 µs</span></li>
             <li><span class="rows__name">Skip one cell</span><span class="rows__value">%%autopsy off</span></li>
           </ul>
-          <a class="link" href="lite/notebooks/index.html?path=try-loop-autopsy.ipynb" target="_blank" rel="noopener">Open the demo notebook in Jupyter</a>
+          <a class="link" href="lite/notebooks/index.html?path=loop-autopsy-all-features.ipynb" target="_blank" rel="noopener">Open the demo notebook in Jupyter</a>
         </div>
         <div class="frame frame--split span-6 start-7" data-fx="gradient-mesh" data-fx-seed="89" data-fx-palette='{"bg":"#c6d3df","surface":"#d6e0e9","ink":"#25303a","accent":"#3f6a92"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'>
           <div class="stage stage--fade-br"><div class="at-rise to-edge fit" style="--fit-max:520px;--ax:max(24px, 50% - 260px);--ay:56px;--ay-sm:40px" data-ui-loop>
@@ -440,7 +456,7 @@ call  n (same)
           <a class="nav__logo" href="#top"><span class="mark" data-mark="stack" aria-hidden="true"></span>loop-autopsy</a>
           <p class="footer__lede">Infinite-loop checker for Jupyter.</p>
         </div>
-        <div class="span-2 footer__col"><h4>Product</h4><ul><li><a href="#report">Report</a></li><li><a href="#checks">Checks</a></li></ul></div>
+        <div class="span-2 footer__col"><h4>Product</h4><ul><li><a href="#report">Report</a></li><li><a href="#features">All features</a></li></ul></div>
         <div class="span-2 footer__col"><h4>Start</h4><ul><li><a href="#demo">Demo</a></li><li><a href="#try">Try it</a></li></ul></div>
         <div class="span-2 footer__col"><h4>Project</h4><ul><li><a href="#install">Install</a></li><li><a href="#team">Team</a></li></ul></div>
         <div class="span-2 footer__col"><h4>Code</h4><ul><li><a href="https://github.com/Geoeoeo217/loop-autopsy">GitHub</a></li><li><a href="https://pypi.org/project/loop-autopsy/">PyPI</a></li></ul></div>
@@ -461,6 +477,6 @@ call  n (same)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="live/live.js?v=5" defer></script>
-<script src="live/playground.js?v=6" defer></script>
+<script src="live/playground.js?v=7" defer></script>
 </body>
 </html>

@@ -13,6 +13,10 @@
     grow: 'nums = [1, 2]\nfor n in nums:\n    nums.append(n)',
     wrong: 'i = 10\nwhile i > 0:\n    i += 1',
     recursion: 'def f(n):\n    return f(n)\n\nf(3)',
+    cycle: 'a = 0\nwhile a < 5:\n    a = (a + 1) % 3',
+    endless: 'import itertools\nnumbers = list(itertools.count())',
+    after: 'count = 0\nwhile count < 3:\n    print(count)\ncount += 1',
+    whiletrue: 'n = 0\nwhile True:\n    pass',
     correct: 'total = 0\nfor i in range(1_000_000):\n    total += i\nprint("done", total)',
   };
   const LIMIT = 10000;
