@@ -49,3 +49,27 @@
   #report .app.fill { height: 560px; flex: none; }
   #team .frame--split { margin-top: var(--s-6); }
 }
+
+/* phones: the hero grows so its notebook shows every cell, and the cell rows keep clear of the edges */
+@media (max-width: 639px) {
+  main > .hero { height: auto !important; min-height: 0 !important; padding-bottom: var(--s-7); }
+  .hero--collage .hero__grid { display: flex; flex-direction: column; }
+  .hero--collage .hero__art { flex: none !important; height: 470px !important; min-height: 470px; }
+  .hero__art > .ly-piece--main { width: calc(100% - 2 * var(--s-4)) !important; right: var(--s-4); }
+  .ly-piece--main .d-main { padding-right: 16px !important; }
+  .ly-piece--main .d-row { grid-template-columns: 36px minmax(0, 1fr) auto !important; gap: 10px; }
+  .ly-piece--main .d-row b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+  .lv-band__set { font-size: 24px; gap: 32px; padding-right: 32px; }
+  .lv-band__set span { gap: 32px; }
+}
+@media (max-width: 639px) {
+  .rep__head { white-space: nowrap; gap: 8px; font-size: 13px; }
+  .rep__head > span:not(.rep__chip) { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .rep__head b { white-space: nowrap; }
+  .rep { padding: 16px 14px; }
+  .rep__head { margin: -16px -14px 16px; padding: 0 14px; }
+}
+@media (max-width: 639px) {
+  .d-win__bar > span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  main > .hero { padding-bottom: var(--s-6) !important; }
+}

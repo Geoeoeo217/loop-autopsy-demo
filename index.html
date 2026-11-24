@@ -41,7 +41,7 @@
 <link rel="stylesheet" href="assets/layout/demo.css">
 <script src="assets/backgrounds/backgrounds.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
-<link rel="stylesheet" href="live/live.css">
+<link rel="stylesheet" href="live/live.css?v=4">
 <!-- page CSS: only what sits inside a visual, and one --p-h per card group -->
 <style>
   /* hero collage: the note card and the window's row columns (from hero-collage.html) */
@@ -285,7 +285,7 @@ round  count (same)
             <h3>Checks every loop while it runs</h3>
             <p>Each loop gets a few cheap checks per round, about 0.1 to 0.3 µs. It stops only with proof.</p>
             <div class="panel">
-              <div class="dg" data-diagram data-dg-still><script type="application/json">{"layout":"lanes","alt":"Each notebook cell goes through loop-autopsy, which checks for a stuck loop, a jump over the stop value and a counter moving the wrong way at the same time.","input":{"label":"Cell","icon":"logos:jupyter","sub":"while count <= 5"},"core":{"label":"loop-autopsy"},"lanes":[{"label":"Stuck loop","icon":"ui:refresh-cw","done":true,"sub":"3 rounds"},{"label":"Jumped over","icon":"ui:git-branch","done":true,"sub":"x != 10"},{"label":"Wrong way","icon":"ui:list-checks","done":true,"sub":"i += 1"}],"motion":{"cycle":3.2}}</script></div>
+              <div class="dg" data-diagram data-dg-phone="loop"><script type="application/json">{"layout":"lanes","alt":"Each notebook cell goes through loop-autopsy, which checks for a stuck loop, a jump over the stop value and a counter moving the wrong way at the same time.","input":{"label":"Cell","icon":"logos:jupyter","sub":"while count <= 5"},"core":{"label":"loop-autopsy"},"lanes":[{"label":"Stuck loop","icon":"ui:refresh-cw","done":true,"sub":"3 rounds"},{"label":"Jumped over","icon":"ui:git-branch","done":true,"sub":"x != 10"},{"label":"Wrong way","icon":"ui:list-checks","done":true,"sub":"i += 1"}],"motion":{"cycle":3.2}}</script></div>
             </div>
           </article>
           <article class="card card--row card--open span-6">
@@ -425,7 +425,7 @@ round  count (same)
           </ul>
         </div>
         <div class="frame frame--split span-6 start-7">
-          <div class="dg" data-diagram data-dg-still><script type="application/json">{"layout":"hub","alt":"loop-autopsy in the middle, with its five parts around it: loop rewriting, detection rules, memory checks, reports and the health bar.","center":{"label":"loop-autopsy","icon":"logos:python"},"spokes":[{"label":"Loop rewriting","icon":"ui:file-code","sub":"transformer.py"},{"label":"Detection rules","icon":"ui:search","sub":"detectors.py"},{"label":"Memory checks","icon":"ui:microchip","sub":"growth.py"},{"label":"Reports","icon":"ui:file-text","sub":"report.py"},{"label":"Health bar","icon":"ui:chart-column","sub":"heatmap.py"}],"motion":{"cycle":3.2}}</script></div>
+          <div class="dg" data-diagram data-dg-phone="loop"><script type="application/json">{"layout":"hub","alt":"loop-autopsy in the middle, with its five parts around it: loop rewriting, detection rules, memory checks, reports and the health bar.","center":{"label":"loop-autopsy","icon":"logos:python"},"spokes":[{"label":"Loop rewriting","icon":"ui:file-code","sub":"transformer.py"},{"label":"Detection rules","icon":"ui:search","sub":"detectors.py"},{"label":"Memory checks","icon":"ui:microchip","sub":"growth.py"},{"label":"Reports","icon":"ui:file-text","sub":"report.py"},{"label":"Health bar","icon":"ui:chart-column","sub":"heatmap.py"}],"motion":{"cycle":3.2}}</script></div>
         </div>
       </div>
     </div>
@@ -468,6 +468,6 @@ round  count (same)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="live/live.js" defer></script>
+<script src="live/live.js?v=4" defer></script>
 </body>
 </html>

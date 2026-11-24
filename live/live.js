@@ -143,3 +143,14 @@
 
   addEventListener('load', () => ScrollTrigger.refresh());
 })();
+
+/* phones: the kit holds its own fragments still under 640px, so the install terminal gets a light loop here */
+(() => {
+  const { gsap } = window;
+  if (!gsap || matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(max-width: 639px)').matches) return;
+  const lines = [...document.querySelectorAll('#install .ui-term__track > .ui-term__ln')].slice(1);
+  if (!lines.length) return;
+  gsap.timeline({ repeat: -1, repeatDelay: 1.6 })
+    .fromTo(lines, { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.28, ease: 'expo.out', immediateRender: false })
+    .to(lines, { opacity: 0, duration: 0.3 }, '+=2.6');
+})();
