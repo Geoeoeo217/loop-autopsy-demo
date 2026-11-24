@@ -135,3 +135,9 @@
   .nbw .rep__in { grid-template-columns: 42px minmax(0, 1fr); }
   .nbw .rep__out, .nbw .nbw__line { padding-left: 42px; }
 }
+
+/* report section: both reports show in full instead of being cut by the window's bottom */
+#report { height: auto !important; min-height: 100svh; }
+#report .app.fill { height: auto !important; flex: none; }
+#report .app > .app__pane::after { display: none; }
+#report .app > .app__pane--list { max-height: none !important; }

@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="assets/layout/demo.css">
 <script src="assets/backgrounds/backgrounds.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
-<link rel="stylesheet" href="live/live.css?v=9">
+<link rel="stylesheet" href="live/live.css?v=10">
 <!-- page CSS: only what sits inside a visual, and one --p-h per card group -->
 <style>
   /* hero collage: the note card and the window's row columns (from hero-collage.html) */
@@ -168,7 +168,7 @@ round  count (same)
         <p class="span-6 start-7">The report names the line, shows the last rounds as evidence and ends with a hint for the fix. Correct loops get no report at all. <a class="link" href="https://github.com/Geoeoeo217/loop-autopsy">See the code on GitHub</a></p>
       </div>
       <div class="ui app fill" role="img" aria-label="Two real loop-autopsy reports from one notebook: a list that keeps growing and a stuck loop">
-        <div class="app__pane app__pane--list"><div class="ui ui-panel rep"><div class="rep__head"><b>Cell 4</b><span>homework.ipynb · line 2</span><span class="rep__chip">Growing list</span></div><div class="rep__in"><span class="rep__n"><span>[</span>4<span>]</span>:</span><div class="rep__code">nums = [<span class="m">1</span>, <span class="m">2</span>]
+        <div class="app__pane app__pane--list"><div class="ui ui-panel rep"><div class="rep__head"><b>Cell <span>[</span>4<span>]</span></b><span>homework.ipynb · line 2</span><span class="rep__chip">Growing list</span></div><div class="rep__in"><span class="rep__n"><span>[</span>4<span>]</span>:</span><div class="rep__code">nums = [<span class="m">1</span>, <span class="m">2</span>]
 <span class="k">for</span> n <span class="k">in</span> nums:
     nums.append(n)</div></div><div class="rep__box"><span class="t">Loop autopsy — loop over a list that keeps growing (line 2)</span>
     for n in nums:
@@ -185,7 +185,7 @@ round  nums            n (same)
 1,992  list(len=1993)  2
 2,008  list(len=2009)  2
 
-<span class="h">Hint: Loop over a copy (`for ... in nums[:]:`) or put new items in a separate list.</span></div></div></div>
+<span class="h">Hint: Loop over a copy (`for ... in nums<span>[</span>:<span>]</span>:`) or put new items in a separate list.</span></div></div></div>
         <div class="app__pane app__pane--open">
           <div class="ui ui-panel rep">
             <div class="rep__head"><b>Cell <span>[</span>2<span>]</span></b><span>homework.ipynb · line 2</span><span class="rep__chip">Stuck loop</span></div>
