@@ -31,17 +31,13 @@
 }
 </style>
 <link rel="stylesheet" href="assets/ui/base.css">
-<link rel="stylesheet" href="assets/ui/window/fragment.css">
-<link rel="stylesheet" href="assets/ui/notify/fragment.css">
-<link rel="stylesheet" href="assets/ui/toggles/fragment.css">
-<link rel="stylesheet" href="assets/ui/stat/fragment.css">
 <link rel="stylesheet" href="assets/ui/terminal-run/fragment.css">
 <link rel="stylesheet" href="assets/diagrams/diagram.css">
 <!-- the hero's hand-drawn notebook window (kit pieces from the collage hero demo) -->
 <link rel="stylesheet" href="assets/layout/demo.css">
 <script src="assets/backgrounds/backgrounds.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
-<link rel="stylesheet" href="live/live.css?v=4">
+<link rel="stylesheet" href="live/live.css?v=6">
 <!-- page CSS: only what sits inside a visual, and one --p-h per card group -->
 <style>
   /* hero collage: the note card and the window's row columns (from hero-collage.html) */
@@ -111,7 +107,7 @@
      effect: grain-gradient in the hero frame; card grounds gradient-mesh (the dealt painterly-landscape
              allows one painted panel at most, so the group takes the mesh family's quiet field)
      moments: none (0 of 2)
-     screens: hero 1, report 1, demo 1, checks 2, install 1, team 1, footer 1 -->
+     screens: hero 1, report 1, demo 1, try 1, checks 2, install 1, team 1, footer 1 -->
 
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
@@ -119,6 +115,7 @@
     <nav class="nav__links" aria-label="Main">
       <div class="nav__item"><a class="nav__link" href="#report">Report</a></div>
       <div class="nav__item"><a class="nav__link" href="#demo">Demo</a></div>
+      <div class="nav__item"><a class="nav__link" href="#try">Try it</a></div>
       <div class="nav__item"><a class="nav__link" href="#checks">Checks</a></div>
       <div class="nav__item"><a class="nav__link" href="#install">Install</a></div>
       <div class="nav__item"><a class="nav__link" href="#team">Team</a></div>
@@ -142,34 +139,23 @@
         <div class="btn-row"><a class="btn btn--primary" href="https://pypi.org/project/loop-autopsy/">Get it on PyPI</a><a class="btn btn--secondary" href="#demo">Watch the demo</a></div>
         <p class="hero__proof">Stops a stuck loop after 3 rounds. Tested on Windows, macOS and Linux.</p>
       </div>
-      <div class="hero__art span-6 start-7" data-fx="grain-gradient" data-fx-seed="7" data-fx-palette='{"bg":"#c6d3df","surface":"#d6e0e9","ink":"#25303a","accent":"#3f6a92"}' data-fx-params='{"grainMotion":0}' role="img" aria-label="A notebook in which loop-autopsy stopped five endless loops, with the report for a stuck loop on line 2">
-        <div class="ly-piece ly-piece--main d-win" aria-hidden="true">
-          <div class="d-win__bar"><span class="d-win__dots"><i></i><i></i><i></i></span><span>homework.ipynb · Python 3 (ipykernel)</span></div>
-          <div class="d-win__body">
-            <div class="d-side">
-              <span class="is-on"><i></i>homework.ipynb</span><span><i></i>lab3.ipynb</span><span><i></i>data.csv</span>
-              <span class="d-side__label">Kernel</span><span><i></i>Python 3.12</span><span><i></i>loop-autopsy 0.4.0</span>
-            </div>
-            <div class="d-main">
-              <div class="d-main__head"><h4>Cells run</h4><span class="d-btn">Last report</span></div>
-              <div class="d-tabs"><span class="is-on">All 6</span><span>Stopped 5</span><span>Finished 1</span></div>
-              <div class="d-rows">
-                <div class="d-row"><span class="d-thumb cell"><span>[</span>2<span>]</span></span><div><b>while count &lt;= 5:</b><small>Stuck loop · line 2</small></div><span class="num">3</span><span class="d-chip d-chip--out">Stopped</span></div>
-                <div class="d-row"><span class="d-thumb cell"><span>[</span>3<span>]</span></span><div><b>while x != 10:</b><small>Jumped over 10 · line 2</small></div><span class="num">105</span><span class="d-chip d-chip--out">Stopped</span></div>
-                <div class="d-row"><span class="d-thumb cell"><span>[</span>4<span>]</span></span><div><b>for n in nums:</b><small>Growing list · line 2</small></div><span class="num">2,008</span><span class="d-chip d-chip--out">Stopped</span></div>
-                <div class="d-row"><span class="d-thumb cell"><span>[</span>5<span>]</span></span><div><b>for i in range(1_000_000):</b><small>No problem found</small></div><span class="num">1,000,000</span><span class="d-chip">Finished</span></div>
-                <div class="d-row"><span class="d-thumb cell"><span>[</span>6<span>]</span></span><div><b>while i &gt; 0:</b><small>Wrong direction · line 2</small></div><span class="num">501</span><span class="d-chip d-chip--out">Stopped</span></div>
-                <div class="d-row"><span class="d-thumb cell"><span>[</span>7<span>]</span></span><div><b>f(3)</b><small>Same argument every call</small></div><span class="num">991</span><span class="d-chip d-chip--out">Stopped</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="ly-piece ly-piece--note d-card" aria-hidden="true" data-ly-steps="700">
-          <div class="d-card__row"><h5>Loop autopsy, cell <span>[</span>2<span>]</span></h5><span class="d-chip d-chip--out" data-step data-step-at="4">Stopped</span></div>
-          <div class="d-note__line" data-step><i class="warn">!</i><span><code>count = 1</code> never changed</span></div>
-          <div class="d-note__line" data-step><i>✓</i><span><b>3 rounds</b> checked in 0.00 s</span></div>
-          <div class="d-note__line" data-step><i>✓</i><span>Hint: add <code>count += 1</code></span></div>
-        </div>
+      <div class="hero__art span-6 start-7" data-fx="grain-gradient" data-fx-seed="7" data-fx-palette='{"bg":"#c6d3df","surface":"#d6e0e9","ink":"#25303a","accent":"#3f6a92"}' data-fx-params='{"grainMotion":0}' role="img" aria-label="A notebook in which loop-autopsy stops a stuck loop and prints its report">
+        <div class="ly-piece ly-piece--main" aria-hidden="true"><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body"><div class="rep__in"><span class="rep__n"><span>[</span>1<span>]</span>:</span><div class="rep__code">%load_ext loop_autopsy</div></div><div class="nbw__line">loop-autopsy 0.4.0 is watching your loops. Type %autopsy help for options.</div><div class="rep__in"><span class="rep__n" data-hero-prompt><span>[</span>2<span>]</span>:</span><div class="rep__code">count = <span class="m">1</span>
+<span class="k">while</span> count &lt;= <span class="m">5</span>:
+    <span class="k">print</span>(count)</div></div><div class="nbw__line" data-hero-print>1
+1</div><div class="rep__box" data-hero-report><span class="t">Loop autopsy — stuck loop (line 2)</span>
+    while count &lt;= 5:
+
+Nothing changed between rounds: `count = 1` stayed exactly the same, so the condition `count &lt;= 5` is True every time and the loop can never end.
+
+Last rounds checked:
+round  count (same)
+-----  ------------
+1      1
+2      1
+3      1
+
+<span class="h">Hint: Add a line inside the loop that changes `count` so that `count &lt;= 5` eventually becomes False (for example `count += 1`).</span></div><div class="nbw__line">Stopped after 3 rounds in 0.00 s  ·  %autopsy last = show again  ·  %%autopsy off = skip a cell</div></div></div></div>
       </div>
     </div></div>
   </section>
@@ -181,41 +167,25 @@
         <h2 id="report-h" class="span-6">Every stopped loop gets a report</h2>
         <p class="span-6 start-7">The report names the line, shows the last rounds as evidence and ends with a hint for the fix. Correct loops get no report at all. <a class="link" href="https://github.com/Geoeoeo217/loop-autopsy">See the code on GitHub</a></p>
       </div>
-      <div class="ui app fill" role="img" aria-label="The loop-autopsy reports of one notebook, with the report for a stuck loop open">
-        <div class="app__pane app__pane--list">
-          <div class="ui ui-panel ui-win" data-ui="window" data-ui-still data-open="Queued" data-work="Checking" data-done="Done">
-            <div class="ui-win__bar">
-              <span class="ui-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="ui-win__crumb">homework.ipynb <i>/</i> <b>Reports</b></span>
-              <span class="ui-spacer"></span>
-              <span class="ui-win__search" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><span class="ui-win__ph">Search</span><span class="ui-kbd">/</span></span>
-            </div>
-            <div class="ui-win__body">
-              <nav class="ui-win__side" aria-hidden="true">
-                <span class="ui-win__nav is-on"><svg class="ui-icon" viewBox="0 0 16 16"><path d="M2.5 9h3l1 1.5h3l1-1.5h3"/><path d="M2.5 9 4 3.5h8L13.5 9v3.5h-11z"/></svg>Stopped<em>7</em></span>
-                <span class="ui-win__nav"><svg class="ui-icon" viewBox="0 0 16 16"><path d="m3.5 8.4 2.8 2.8 6.2-6.4"/></svg>Finished<em>3</em></span>
-                <span class="ui-win__label">Notebooks</span>
-                <span class="ui-win__nav"><span class="ui-win__hash">#</span>homework</span>
-                <span class="ui-win__nav"><span class="ui-win__hash">#</span>lab3</span>
-              </nav>
-              <div class="ui-win__main">
-                <div class="ui-win__cols" aria-hidden="true"><span>Cell</span><span>Loop</span><span>Status</span><span>Rounds</span></div>
-                <ul class="ui-win__rows">
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="1">2</span><span class="ui-win__who">Stuck loop</span><span class="ui-win__sub">while count &lt;= 5 · line 2</span><span class="ui-win__st is-you" data-st>Stopped</span><span class="ui-win__age">3</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="3">3</span><span class="ui-win__who">Jumped over 10</span><span class="ui-win__sub">while x != 10 · line 2</span><span class="ui-win__st" data-st>Stopped</span><span class="ui-win__age">105</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="4">4</span><span class="ui-win__who">List that keeps growing</span><span class="ui-win__sub">for n in nums · line 2</span><span class="ui-win__st" data-st>Stopped</span><span class="ui-win__age">2,008</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="2">5</span><span class="ui-win__who">Sum of a million numbers</span><span class="ui-win__sub">for i in range(1_000_000)</span><span class="ui-win__st is-done" data-st>Finished</span><span class="ui-win__age">1M</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="5">6</span><span class="ui-win__who">Moving the wrong way</span><span class="ui-win__sub">while i &gt; 0 · line 2</span><span class="ui-win__st" data-st>Stopped</span><span class="ui-win__age">501</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="1">7</span><span class="ui-win__who">Recursion on the same input</span><span class="ui-win__sub">def f(n) · line 1</span><span class="ui-win__st" data-st>Stopped</span><span class="ui-win__age">991</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="3">8</span><span class="ui-win__who">Counter fixed</span><span class="ui-win__sub">while count &lt;= 5 · count += 1</span><span class="ui-win__st is-done" data-st>Finished</span><span class="ui-win__age">5</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="4">2</span><span class="ui-win__who">Values in a cycle</span><span class="ui-win__sub">while n != 1 · lab3</span><span class="ui-win__st" data-st>Stopped</span><span class="ui-win__age">12</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="2">3</span><span class="ui-win__who">Over the time limit</span><span class="ui-win__sub">while True · lab3</span><span class="ui-win__st" data-st>Stopped</span><span class="ui-win__age">60 s</span></li>
-                  <li class="ui-win__row" data-row><span class="ui-avatar" data-tone="5">4</span><span class="ui-win__who">Average of a column</span><span class="ui-win__sub">for row in rows · lab3</span><span class="ui-win__st is-done" data-st>Finished</span><span class="ui-win__age">4,812</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="ui app fill" role="img" aria-label="Two real loop-autopsy reports from one notebook: a list that keeps growing and a stuck loop">
+        <div class="app__pane app__pane--list"><div class="ui ui-panel rep"><div class="rep__head"><b>Cell 4</b><span>homework.ipynb · line 2</span><span class="rep__chip">Growing list</span></div><div class="rep__in"><span class="rep__n"><span>[</span>4<span>]</span>:</span><div class="rep__code">nums = [<span class="m">1</span>, <span class="m">2</span>]
+<span class="k">for</span> n <span class="k">in</span> nums:
+    nums.append(n)</div></div><div class="rep__box"><span class="t">Loop autopsy — loop over a list that keeps growing (line 2)</span>
+    for n in nums:
+
+You are looping over `nums` while adding to it. It started with 2 items and now has 2,009: it grows as fast as the loop reads it, so the loop never reaches the end.
+
+Last rounds checked:
+round  nums            n (same)
+-----  --------------  --------
+1,928  list(len=1929)  2
+1,944  list(len=1945)  2
+1,960  list(len=1961)  2
+1,976  list(len=1977)  2
+1,992  list(len=1993)  2
+2,008  list(len=2009)  2
+
+<span class="h">Hint: Loop over a copy (`for ... in nums[:]:`) or put new items in a separate list.</span></div></div></div>
         <div class="app__pane app__pane--open">
           <div class="ui ui-panel rep">
             <div class="rep__head"><b>Cell <span>[</span>2<span>]</span></b><span>homework.ipynb · line 2</span><span class="rep__chip">Stuck loop</span></div>
@@ -273,6 +243,36 @@ round  count (same)
     </div>
   </section>
 
+  <!-- TRY IT: the real loop-autopsy 0.4.0 from PyPI, running in the browser (Pyodide in a Web Worker) -->
+  <section class="section" id="try" aria-labelledby="try-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <h2 id="try-h" class="span-6">Try it in your browser</h2>
+        <p class="span-6 start-7">This runs the real loop-autopsy 0.4.0 from PyPI inside your browser, with Python compiled for the web. Pick a loop or write your own, then press Run cell.</p>
+      </div>
+      <div class="pg">
+        <div class="pg__bar" role="group" aria-label="Example loops">
+          <span class="t-label">Examples</span>
+          <button class="pg__chip" type="button" data-example="stuck" aria-pressed="true">Stuck loop</button>
+          <button class="pg__chip" type="button" data-example="jump" aria-pressed="false">Jumped over 10</button>
+          <button class="pg__chip" type="button" data-example="grow" aria-pressed="false">Growing list</button>
+          <button class="pg__chip" type="button" data-example="wrong" aria-pressed="false">Wrong direction</button>
+          <button class="pg__chip" type="button" data-example="recursion" aria-pressed="false">Recursion</button>
+          <button class="pg__chip" type="button" data-example="correct" aria-pressed="false">Correct loop</button>
+        </div>
+        <div class="pg__grid">
+          <div class="pg__in">
+            <label for="pg-code">Notebook cell</label>
+            <textarea id="pg-code" spellcheck="false" autocapitalize="off" autocomplete="off" rows="8"></textarea>
+            <div class="pg__actions"><button class="btn btn--secondary" id="pg-run" type="button">Run cell</button><span id="pg-status" aria-live="polite">Python starts when you reach this section.</span></div>
+          </div>
+          <div class="pg__out" id="pg-out" aria-live="polite"><div class="pg__print pg__wait">Press Run cell to run it.</div></div>
+        </div>
+      </div>
+      <p class="pg__note">The browser cannot start threads, so loop-autopsy's watchdog (which stops a loop stuck inside one long call such as time.sleep) is off here. This page stops any cell that runs longer than 10 seconds.</p>
+    </div>
+  </section>
+
   <!-- FEATURES 2x2, two screens -->
   <section class="section g2" id="checks" aria-labelledby="checks-h">
     <div class="wrap">
@@ -291,17 +291,24 @@ round  count (same)
           <article class="card card--row card--open span-6">
             <h3>Names the variable that broke</h3>
             <p>Each report names the variable, shows its last values and gives one fix, such as count += 1.</p>
-            <div class="panel" data-fx="gradient-mesh" data-fx-seed="21" data-fx-palette='{"bg":"#d9ccb7","surface":"#e9e0d2","ink":"#2a2622","accent":"#a8794a"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'>
-              <div class="stage stage--fade-b"><div class="at-rise fit" style="--fit-max:380px;--ax:32px;--ay:calc(100% - 180px);--ay-sm:calc(100% - 180px)">
-                <div class="ui ui-notify" data-ui="notify">
-                  <ul class="ui-notify__list" data-notify-list>
-                    <li class="ui-note"><span class="ui-note__ico"><svg class="ui-icon" viewBox="0 0 16 16"><path d="M8 4v5M8 11.5v.5"/></svg></span><span class="ui-note__text"><span class="ui-note__title">Stuck loop, line 2<time>now</time></span><span class="ui-note__body">count = 1 never changed</span></span><span class="ui-btn ui-btn--sm ui-note__btn">Hint</span></li>
-                    <li class="ui-note"><span class="ui-note__ico"><svg class="ui-icon" viewBox="0 0 16 16"><path d="M8 4v5M8 11.5v.5"/></svg></span><span class="ui-note__text"><span class="ui-note__title">Jumped over 10<time>1m</time></span><span class="ui-note__body">x went from 9 to 12</span></span></li>
-                    <li class="ui-note"><span class="ui-note__ico"><svg class="ui-icon" viewBox="0 0 16 16"><path d="M8 4v5M8 11.5v.5"/></svg></span><span class="ui-note__text"><span class="ui-note__title">List keeps growing<time>3m</time></span><span class="ui-note__body">nums grew to 2,009 items</span></span></li>
-                  </ul>
-                </div>
-              </div></div>
-            </div>
+            <div class="panel" data-fx="gradient-mesh" data-fx-seed="21" data-fx-palette='{"bg":"#d9ccb7","surface":"#e9e0d2","ink":"#2a2622","accent":"#a8794a"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body"><div class="rep__in"><span class="rep__n"><span>[</span>6<span>]</span>:</span><div class="rep__code">i = <span class="m">10</span>
+<span class="k">while</span> i &gt; <span class="m">0</span>:
+    i += <span class="m">1</span></div></div><div class="rep__box"><span class="t">Loop autopsy — loop moving the wrong way (line 2)</span>
+    while i &gt; 0:
+
+The loop stops when `i &gt; 0` becomes False, which needs `i` to reach 0. But over the last 500 checks `i` went from 10 to 510, moving further away from 0 every time.
+
+Last rounds checked:
+round  i
+-----  ---
+496    505
+497    506
+498    507
+499    508
+500    509
+501    510
+
+<span class="h">Hint: Check the line that updates `i`: should it go the other way (for example `-=` instead of `+=`)?</span></div></div></div></div>
           </article>
         </div>
       </div>
@@ -309,54 +316,38 @@ round  count (same)
         <article class="card card--row card--open span-6">
           <h3>Guards memory and time</h3>
           <p>It stops a loop before the kernel runs out of memory and warns early when a loop will pass 60 s.</p>
-          <div class="panel" data-fx="gradient-mesh" data-fx-seed="34" data-fx-palette='{"bg":"#c6d3df","surface":"#d6e0e9","ink":"#25303a","accent":"#3f6a92"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'>
-            <div class="stage stage--fade-b"><div class="at-corner" style="--ax:32px;--ay:56px;--ay-sm:48px">
-              <div class="ui ui-panel ui-toggles" data-ui="toggles">
-                <div class="ui-head">
-                  <svg class="ui-icon ui-toggles__ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.8 13 4v3.6c0 3-2.1 5.4-5 6.6-2.9-1.2-5-3.6-5-6.6V4z"/><path d="m5.8 8 1.6 1.6 3-3.2"/></svg>
-                  <div class="ui-title">%autopsy config</div>
-                  <span class="ui-spacer"></span>
-                  <div class="ui-meta" data-tg-count>4 of 5 on</div>
-                </div>
-                <ul class="ui-toggles__list">
-                  <li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Watch loops</span><span class="ui-tg__sub">%autopsy on</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Watch loops"><i></i></button></li>
-                  <li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Stop at 85% memory</span><span class="ui-tg__sub">memory_stop = 0.85</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Stop at 85 percent memory"><i></i></button></li>
-                  <li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Time limit of 60 s</span><span class="ui-tg__sub">time_limit = 60</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Time limit of 60 seconds"><i></i></button></li>
-                  <li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Cell health bar</span><span class="ui-tg__sub">heatmap auto</span></span><button class="ui-switch is-on" type="button" role="switch" aria-checked="true" aria-label="Cell health bar"><i></i></button></li>
-                  <li class="ui-tg"><span class="ui-tg__text"><span class="ui-tg__label">Skip this cell</span><span class="ui-tg__sub">%%autopsy off</span></span><button class="ui-switch" type="button" role="switch" aria-checked="false" aria-label="Skip this cell"><i></i></button></li>
-                </ul>
-              </div>
-            </div></div>
-          </div>
+          <div class="panel" data-fx="gradient-mesh" data-fx-seed="34" data-fx-palette='{"bg":"#c6d3df","surface":"#d6e0e9","ink":"#25303a","accent":"#3f6a92"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body"><div class="rep__in"><span class="rep__n"><span>[</span>7<span>]</span>:</span><div class="rep__code">%autopsy config time_limit=<span class="m">120</span></div></div><div class="nbw__line">time_limit = 120.0</div><div class="rep__in"><span class="rep__n"><span>[</span>8<span>]</span>:</span><div class="rep__code">%autopsy reset</div></div><div class="nbw__line">Settings are back to their defaults:
+  time_limit       120.0 -&gt; 60.0</div><div class="rep__in"><span class="rep__n"><span>[</span>9<span>]</span>:</span><div class="rep__code">%autopsy</div></div><div class="nbw__line">loop-autopsy is ON. Settings:
+  time_limit       60.0
+  estimate_after   5.0
+  direction_after  500
+  jump_after       100
+  growth_after     2000
+  memory_stop      0.85
+  memory_warn      0.75</div></div></div></div>
         </article>
         <article class="card card--row card--open span-6">
           <h3>Catches runaway recursion</h3>
           <p>A function that calls itself with the same argument is caught, with its first and last calls side by side.</p>
-          <div class="panel" data-fx="gradient-mesh" data-fx-seed="55" data-fx-palette='{"bg":"#cdd6c6","surface":"#dce3d6","ink":"#262d24","accent":"#6c8e63"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'>
-            <div class="stage stage--fade-b"><div class="at-corner" style="--ax:32px;--ay:56px;--ay-sm:48px">
-              <div class="ui ui-panel ui-stat" data-ui="stat" data-from="1" data-to="991" data-suffix="">
-                <div class="ui-stat__head">
-                  <div class="ui-stat__top">
-                    <span class="ui-stat__label">Nested calls of f(n)</span>
-                    <span class="ui-stat__range">n = 3</span>
-                  </div>
-                  <div class="ui-stat__line">
-                    <span class="ui-stat__num" data-stat-num>991</span>
-                    <span class="ui-chip ui-chip--plain ui-stat__delta">RecursionError</span>
-                    <span class="ui-stat__sub">same argument</span>
-                  </div>
-                </div>
-                <div class="ui-stat__chart">
-                  <svg class="ui-stat__svg" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true">
-                    <path class="ui-stat__grid" d="M0 30.5H400M0 60.5H400M0 90.5H400"/>
-                    <path class="ui-stat__cover" fill-rule="evenodd" d=""/>
-                    <g class="ui-stat__bars"><rect rx="3" x="0.00" y="112" width="21.14" height="8"/><rect rx="3" x="29.14" y="104" width="21.14" height="16"/><rect rx="3" x="58.29" y="96" width="21.14" height="24"/><rect rx="3" x="87.43" y="88" width="21.14" height="32"/><rect rx="3" x="116.57" y="80" width="21.14" height="40"/><rect rx="3" x="145.71" y="72" width="21.14" height="48"/><rect rx="3" x="174.86" y="64" width="21.14" height="56"/><rect rx="3" x="204.00" y="56" width="21.14" height="64"/><rect rx="3" x="233.14" y="48" width="21.14" height="72"/><rect rx="3" x="262.29" y="40" width="21.14" height="80"/><rect rx="3" x="291.43" y="32" width="21.14" height="88"/><rect rx="3" x="320.57" y="24" width="21.14" height="96"/><rect rx="3" x="349.71" y="16" width="21.14" height="104"/><rect rx="3" x="378.86" y="8" width="21.14" height="112"/></g>
-                  </svg>
-                  <div class="ui-stat__axis" aria-hidden="true"><span>Call 1</span><span>Call 500</span><span>Call 991</span></div>
-                </div>
-              </div>
-            </div></div>
-          </div>
+          <div class="panel" data-fx="gradient-mesh" data-fx-seed="55" data-fx-palette='{"bg":"#cdd6c6","surface":"#dce3d6","ink":"#262d24","accent":"#6c8e63"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body"><div class="rep__in"><span class="rep__n"><span>[</span>10<span>]</span>:</span><div class="rep__code"><span class="k">def</span> f(n):
+    <span class="k">return</span> f(n)
+
+f(<span class="m">3</span>)</div></div><div class="rep__box"><span class="t">Loop autopsy — recursion stuck on the same arguments (line 1)</span>
+    def f(n):
+
+`f` kept calling itself (991 nested calls) until Python stopped it with `RecursionError`. Every call received exactly the same arguments (`n = 3`), so no call is any closer to the base case than the first one.
+
+First and last calls:
+call  n (same)
+----  --------
+1     3
+2     3
+3     3
+989   3
+990   3
+991   3
+
+<span class="h">Hint: The recursive call must pass a changed value, for example a smaller number or a shorter list, so that the base case is eventually reached.</span></div></div></div></div>
         </article>
       </div>
     </div>
@@ -449,8 +440,8 @@ round  count (same)
           <p class="footer__lede">Infinite-loop checker for Jupyter.</p>
         </div>
         <div class="span-2 footer__col"><h4>Product</h4><ul><li><a href="#report">Report</a></li><li><a href="#checks">Checks</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Start</h4><ul><li><a href="#demo">Demo</a></li><li><a href="#install">Install</a></li></ul></div>
-        <div class="span-2 footer__col"><h4>Project</h4><ul><li><a href="#team">Team</a></li><li><a href="https://github.com/Geoeoeo217/loop-autopsy/blob/main/examples/demo.ipynb">Notebook</a></li></ul></div>
+        <div class="span-2 footer__col"><h4>Start</h4><ul><li><a href="#demo">Demo</a></li><li><a href="#try">Try it</a></li></ul></div>
+        <div class="span-2 footer__col"><h4>Project</h4><ul><li><a href="#install">Install</a></li><li><a href="#team">Team</a></li></ul></div>
         <div class="span-2 footer__col"><h4>Code</h4><ul><li><a href="https://github.com/Geoeoeo217/loop-autopsy">GitHub</a></li><li><a href="https://pypi.org/project/loop-autopsy/">PyPI</a></li></ul></div>
       </div>
       <div class="footer__legal">
@@ -468,6 +459,7 @@ round  count (same)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="live/live.js?v=4" defer></script>
+<script src="live/live.js?v=5" defer></script>
+<script src="live/playground.js?v=5" defer></script>
 </body>
 </html>

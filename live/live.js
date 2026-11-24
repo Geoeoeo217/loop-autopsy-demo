@@ -39,41 +39,31 @@
       .from('.hero__art', { y: 28, opacity: 0, scale: 0.985, duration: 1.2 }, 0.2);
   }
 
-  /* ---------- hero notebook: each cell runs, then is stopped or finishes ---------- */
-  const rows = $$('.hero__art .d-row');
-  const fmt = (n) => Math.round(n).toLocaleString('en-US');
-  const finals = rows.map((r) => {
-    const chip = $('.d-chip', r), num = $('.num', r);
-    return { r, chip, num, text: chip.textContent, cls: chip.className, value: parseInt(num.textContent.replace(/,/g, ''), 10) || 0, raw: num.textContent };
-  });
+  /* ---------- hero notebook: the cell runs, prints, and loop-autopsy stops it with its real report ---------- */
+  const prompt = $('[data-hero-prompt]'), printed = $('[data-hero-print]'), report = $('[data-hero-report]');
   let run = null;
   const playNotebook = () => {
+    if (!prompt || !report) return;
     if (run) run.kill();
-    finals.forEach((f) => { f.chip.className = 'd-chip lv-run'; f.chip.textContent = 'Running'; f.num.textContent = '0'; f.r.classList.remove('lv-hot'); });
-    run = gsap.timeline({ delay: 0.15 });
-    finals.forEach((f, i) => {
-      const at = 0.9 + i * 0.55;
-      const c = { v: 0 };
-      run.to(c, { v: f.value, duration: 0.5, ease: 'power1.out', onUpdate: () => { f.num.textContent = fmt(c.v); } }, at)
-        .add(() => {
-          f.num.textContent = f.raw;
-          f.chip.className = f.cls; f.chip.textContent = f.text;
-          if (f.cls.includes('out')) f.r.classList.add('lv-hot');
-        }, at + 0.5)
-        .fromTo(f.chip, { scale: 0.9 }, { scale: 1, duration: 0.35, ease: EASE }, at + 0.5)
-        .add(() => f.r.classList.remove('lv-hot'), at + 1.6);
-    });
+    const n = prompt.querySelector('span:nth-child(1)') ? prompt : null;
+    const label = (t) => { prompt.innerHTML = `<span>[</span>${t}<span>]</span>:`; prompt.classList.toggle('is-run', t === '*'); };
+    label('*'); printed.textContent = ''; gsap.set(report, { clipPath: 'inset(0 0 100% 0)' });
+    const lines = Math.max(8, Math.round(report.offsetHeight / 21));
+    run = gsap.timeline({ delay: 0.6 })
+      .add(() => { printed.textContent = '1'; }, 0.5)
+      .add(() => { printed.textContent = '1\n1'; }, 0.9)
+      .add(() => { label('2'); report.classList.add('lv-typing'); }, 1.4)
+      .to(report, { clipPath: 'inset(0 0 0% 0)', duration: 1.6, ease: `steps(${lines})` }, 1.4)
+      .add(() => report.classList.remove('lv-typing'));
   };
-  if (rows.length) {
-    playNotebook();
-    const art = $('.hero__art');
-    art.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse' && run && !run.isActive()) playNotebook(); });
-  }
+  playNotebook();
+  const art = $('.hero__art');
+  if (art) art.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse' && run && !run.isActive()) playNotebook(); });
 
   /* ---------- report: the list slides in, the report types out ---------- */
   const app = $('#report .app');
   if (app) {
-    const box = $('.rep__box', app);
+    const box = $('.app__pane--open .rep__box', app);
     const tl = gsap.timeline({ scrollTrigger: { trigger: app, start: 'top 75%', once: true } });
     tl.from($$('.ui-win__row', app), { x: -16, opacity: 0, duration: 0.6, stagger: 0.05, ease: EASE })
       .from($$('.rep__in, .rep__out', app).slice(0, 2), { opacity: 0, y: 8, duration: 0.4, stagger: 0.1, ease: EASE }, 0.1);

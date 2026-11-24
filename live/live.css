@@ -73,3 +73,58 @@
   .d-win__bar > span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
   main > .hero { padding-bottom: var(--s-6) !important; }
 }
+
+/* ---------- real notebook output (replaces the kit's made-up interfaces) ---------- */
+.nbw { background: #fff; color: #1d1f22; border-radius: 12px; overflow: hidden; text-align: left;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / .07), 0 24px 60px -28px rgb(0 0 0 / .45); }
+.nbw__bar { display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px; border-bottom: 1px solid rgb(0 0 0 / .07); font: 400 13px/1 var(--font-text); color: #5d6268; white-space: nowrap; overflow: hidden; }
+.nbw__bar i { width: 10px; height: 10px; border-radius: 50%; background: #dcdfe2; flex: none; }
+.nbw__bar b { font-weight: 500; color: #1d1f22; }
+.nbw__body { padding: 16px 18px 24px; font: 400 14px/21px var(--font-mono); }
+.nbw .rep__in { grid-template-columns: 44px minmax(0, 1fr); margin-top: 12px; }
+.nbw .rep__in:first-child { margin-top: 0; }
+.nbw .rep__out, .nbw .nbw__line { white-space: pre-wrap; padding: 6px 0 0 56px; color: #3d4247; }
+.nbw .rep__box { margin-left: 44px; }
+.nbw .rep__code { white-space: pre-wrap; }
+/* feature cards: one notebook window per card, large, cut by the panel's bottom */
+#checks .panel .nbw { position: absolute; left: 28px; right: 28px; top: 32px; }
+#checks .panel { overflow: hidden; }
+#checks .panel::after { content: ""; position: absolute; inset: auto 0 0 0; height: 72px; background: linear-gradient(transparent, rgb(255 255 255 / .55)); pointer-events: none; }
+/* hero: the running prompt */
+.nbw .is-run { color: #1d46ad; }
+
+/* ---------- the playground ---------- */
+.pg { margin-top: var(--s-7); background: #fff; color: #1d1f22; border-radius: 12px; box-shadow: 0 0 0 1px rgb(0 0 0 / .07), 0 24px 60px -28px rgb(0 0 0 / .35); overflow: hidden; }
+.pg__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid rgb(0 0 0 / .07); }
+.pg__bar .t-label { margin-right: 4px; color: #5d6268; }
+.pg__chip { font: 500 13px/1 var(--font-text); padding: 8px 12px; border-radius: 999px; border: 1px solid rgb(0 0 0 / .12); background: #fff; color: #1d1f22; cursor: pointer; transition: background-color .15s ease, border-color .15s ease; }
+.pg__chip[aria-pressed="true"] { background: #e8eefc; border-color: #9db4f0; color: #1d46ad; }
+@media (hover: hover) and (pointer: fine) { .pg__chip:hover { border-color: rgb(0 0 0 / .3); } }
+.pg__chip:active { transform: scale(.97); }
+.pg__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); min-height: 420px; }
+.pg__in { display: flex; flex-direction: column; gap: 12px; padding: 16px; border-right: 1px solid rgb(0 0 0 / .07); }
+.pg__in label { font: 500 13px/1 var(--font-text); color: #5d6268; }
+.pg__in textarea { flex: 1; min-height: 200px; resize: vertical; font: 400 14px/21px var(--font-mono); color: #1d1f22; background: #f5f6f8; border: 1px solid rgb(0 0 0 / .1); border-left: 2px solid var(--action); border-radius: 4px; padding: 12px; tab-size: 4; }
+.pg__in textarea:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+.pg__actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pg__actions span { font-size: 13px; color: #5d6268; }
+.pg__out { padding: 16px; font: 400 13px/20px var(--font-mono); overflow: auto; max-height: 520px; }
+.pg__print { white-space: pre-wrap; color: #3d4247; }
+.pg__print + .pg__rep { margin-top: 8px; }
+.pg__rep { margin: 0; white-space: pre-wrap; }
+.pg__wait { color: #8a8f95; }
+.pg__err { color: #a3271b; }
+.pg__out[data-state="ok"] .pg__print { color: #17673f; }
+.pg__note { margin-top: var(--s-5); font-size: 14px; color: var(--muted); max-width: 62ch; }
+@media (max-width: 1023px) {
+  .pg__grid { grid-template-columns: minmax(0, 1fr); }
+  .pg__in { border-right: 0; border-bottom: 1px solid rgb(0 0 0 / .07); }
+}
+@media (max-width: 639px) {
+  .nbw__body { padding: 12px 12px 20px; font-size: 12px; line-height: 18px; }
+  .nbw .rep__in { grid-template-columns: 34px minmax(0, 1fr); }
+  .nbw .rep__box { margin-left: 0; padding: 10px; }
+  .nbw .rep__out, .nbw .nbw__line { padding-left: 34px; }
+  #checks .panel .nbw { left: 14px; right: 14px; top: 20px; }
+  .pg__out { font-size: 12px; line-height: 18px; }
+}
