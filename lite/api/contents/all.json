@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-11-24T14:34:44.378077Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-11-24T14:34:44.378077Z",
+      "mimetype": null,
+      "name": "try-loop-autopsy.ipynb",
+      "path": "try-loop-autopsy.ipynb",
+      "size": 3864,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-11-24T14:35:36.124491Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-11-24T14:35:36.124615Z",
+  "mimetype": null,
+  "name": "",
+  "path": "",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
