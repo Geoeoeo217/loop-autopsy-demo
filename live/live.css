@@ -1,0 +1,41 @@
+/* loop-autopsy demo page: the motion layer's own styles (GSAP + Lenis drive them from live.js) */
+:root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); }
+
+/* hero h1, split into words: each word rises out of its own line box */
+.lv-w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
+.lv-w > span { display: inline-block; will-change: transform; }
+
+/* hero notebook: the running state of a row */
+.d-chip.lv-run { background: #e8eefc; color: #1d46ad; }
+.d-chip.lv-run::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: currentColor; vertical-align: 1px; animation: lv-blink .8s steps(2, jump-none) infinite; }
+@keyframes lv-blink { 50% { opacity: .2; } }
+.d-row.lv-hot { background: #fff6f5; }
+.d-row { transition: background-color .4s ease; }
+
+/* the stop-loop band: one line of real report phrases that drifts with the scroll */
+.lv-band { overflow: hidden; padding: 28px 0; background: var(--ink, #26251e); color: #dfdedb; border-block: 1px solid rgb(255 255 255 / .06); }
+.lv-band__track { display: flex; width: max-content; will-change: transform; }
+.lv-band__set { display: flex; gap: 48px; padding-right: 48px; font: 500 clamp(28px, 3.4vw, 48px)/1 var(--font-mono); letter-spacing: -.02em; white-space: nowrap; }
+.lv-band__set span { display: inline-flex; align-items: center; gap: 48px; }
+.lv-band__set span::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #ff7a59; }
+.lv-band__set em { font-style: normal; color: #8fb0ff; }
+
+/* checks cards: a soft light that follows the pointer (pointer devices only) */
+@media (hover: hover) and (pointer: fine) {
+  #checks .card { position: relative; isolation: isolate; }
+  #checks .card::before { content: ""; position: absolute; inset: -12px; z-index: -1; border-radius: 12px; pointer-events: none; opacity: 0;
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgb(36 86 214 / .12), transparent 65%);
+    transition: opacity .25s ease; }
+  #checks .card:hover::before { opacity: 1; }
+}
+
+/* footer wordmark, split into letters */
+.close__word .lv-l { display: inline-block; will-change: transform; }
+.close__word { overflow: hidden; }
+
+/* report typing caret */
+.rep__box.lv-typing::after { content: "▍"; color: #a3271b; animation: lv-blink .7s steps(2, jump-none) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .d-chip.lv-run::before, .rep__box.lv-typing::after { animation: none; }
+}
