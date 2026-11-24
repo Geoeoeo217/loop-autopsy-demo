@@ -141,3 +141,38 @@
 #report .app.fill { height: auto !important; flex: none; }
 #report .app > .app__pane::after { display: none; }
 #report .app > .app__pane--list { max-height: none !important; }
+
+/* nothing cut: every notebook window and the terminal show in full */
+.hero__art .nbw__body { font-size: 13px; line-height: 19px; padding-bottom: 16px; }
+#checks { height: auto !important; min-height: 0 !important; }
+#checks > .wrap { display: block !important; }
+#checks > .wrap > .grid:last-child { margin-top: var(--s-6); }
+#checks .panel:has(.nbw) { height: auto !important; min-height: 0; padding: 28px; display: block; }
+#checks .panel .nbw { position: relative !important; left: auto; right: auto; top: auto; }
+#checks .panel:has(.nbw)::after { display: none; }
+#install .frame--split { --ratio: 100%; }
+@media (max-width: 639px) {
+  #checks .panel:has(.nbw) { padding: 14px; }
+  #install .frame--split { --ratio: 120%; }
+}
+@media (min-width: 640px) { .hero--collage .hero__art > .ly-piece--main { top: var(--s-6); } }
+#install .frame--split { height: 600px !important; aspect-ratio: auto !important; }
+@media (max-width: 639px) { #install .frame--split { height: 440px !important; } }
+
+/* the playground's output grows with its content (no inner scroll box), and its section with it */
+#try { height: auto !important; min-height: 100svh; }
+.pg__out { max-height: none !important; overflow: visible !important; }
+.pg__grid { align-items: start; }
+
+/* the install terminal sits inside its frame, whole, instead of running out through the bottom */
+#install .frame--split { height: auto !important; aspect-ratio: auto !important; padding: 48px 40px; }
+#install .frame--split .stage { position: static !important; -webkit-mask: none !important; mask: none !important; }
+#install .frame--split .stage > div { position: static !important; transform: none !important; inset: auto !important; width: 100% !important; max-width: 560px; margin: 0 auto; }
+#install .ui-term__screen { height: auto !important; max-height: none !important; }
+@media (max-width: 639px) { #install .frame--split { padding: 20px 14px; } }
+#install .frame--split .stage { position: relative !important; z-index: 2; }
+#install .frame--split .stage { width: 100% !important; flex: 1 1 auto; align-self: stretch; }
+@media (max-width: 639px) {
+  .hero--collage .hero__art { height: auto !important; min-height: 0 !important; padding: 16px; }
+  .hero__art > .ly-piece--main { position: relative !important; left: auto !important; top: auto !important; right: auto !important; width: 100% !important; z-index: 2; }
+}

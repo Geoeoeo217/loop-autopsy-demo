@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="assets/layout/demo.css">
 <script src="assets/backgrounds/backgrounds.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
-<link rel="stylesheet" href="live/live.css?v=10">
+<link rel="stylesheet" href="live/live.css?v=16">
 <!-- page CSS: only what sits inside a visual, and one --p-h per card group -->
 <style>
   /* hero collage: the note card and the window's row columns (from hero-collage.html) */
@@ -263,10 +263,10 @@ round  count (same)
         <div class="pg__grid">
           <div class="pg__in">
             <label for="pg-code">Notebook cell</label>
-            <textarea id="pg-code" spellcheck="false" autocapitalize="off" autocomplete="off" rows="8"></textarea>
+            <textarea data-lenis-prevent id="pg-code" spellcheck="false" autocapitalize="off" autocomplete="off" rows="8"></textarea>
             <div class="pg__actions"><button class="btn btn--secondary" id="pg-run" type="button">Run cell</button><span id="pg-status" aria-live="polite">Python starts when you reach this section.</span></div>
           </div>
-          <div class="pg__out" id="pg-out" aria-live="polite"><div class="pg__print pg__wait">Press Run cell to run it.</div></div>
+          <div class="pg__out" id="pg-out" aria-live="polite" data-lenis-prevent><div class="pg__print pg__wait">Press Run cell to run it.</div></div>
         </div>
       </div>
       <p class="pg__note">The browser cannot start threads, so loop-autopsy's watchdog (which stops a loop stuck inside one long call such as time.sleep) is off here. This page stops any cell that runs longer than 10 seconds.</p>
