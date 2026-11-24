@@ -39,3 +39,13 @@
 @media (prefers-reduced-motion: reduce) {
   .d-chip.lv-run::before, .rep__box.lv-typing::after { animation: none; }
 }
+
+/* phones and tablets: sections grow to fit their content instead of being locked to one screen,
+   so nothing spills into the next section */
+@media (max-width: 1023px) {
+  main > :is(section, .section):not(.hero), footer.closing { height: auto !important; min-height: 0 !important; padding-bottom: calc(var(--padb) + var(--s-6)); }
+  main > :is(section, .section).g2 > .wrap { display: block !important; }
+  main > :is(section, .section).g2 > .wrap > .grid:last-child { margin-top: var(--s-6); }
+  #report .app.fill { height: 560px; flex: none; }
+  #team .frame--split { margin-top: var(--s-6); }
+}
