@@ -229,3 +229,9 @@
 }
 #report .app.ui { grid-template-rows: minmax(0, 1fr); }
 @media (max-width: 1023px) and (min-width: 640px) { #report .app.ui { grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); } }
+
+/* playground: the cell column stretches to the output's height, the code box fills it (no empty space) */
+.pg__grid { align-items: stretch !important; }
+.pg__in { height: 100%; }
+.pg__in textarea { flex: 1 1 auto; max-height: none !important; min-height: 200px; }
+@media (max-width: 1023px) { .pg__in textarea { flex: none; height: 220px; } }
