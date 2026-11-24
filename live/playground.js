@@ -72,7 +72,7 @@
     timer = setTimeout(() => {               // nothing in the browser can interrupt Python, so the page ends it
       worker.terminate(); worker = null; busy = false; run.textContent = 'Run cell';
       out.dataset.state = 'error';
-      out.innerHTML = `<div class="pg__print pg__err">Stopped by this page after ${LIMIT / 1000} s. In a real notebook loop-autopsy's watchdog would stop it; the browser version has no watchdog.</div>`;
+      out.innerHTML = `<div class="pg__print pg__err">Stopped by this page after ${LIMIT / 1000} s. loop-autopsy found no proof that this loop is endless, so in a real notebook its time limit would stop it (60 s by default).</div>`;
       start();
     }, LIMIT);
   }

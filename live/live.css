@@ -89,7 +89,7 @@
 /* feature cards: one notebook window per card, large, cut by the panel's bottom */
 #checks .panel .nbw { position: absolute; left: 28px; right: 28px; top: 32px; }
 #checks .panel { overflow: hidden; }
-#checks .panel::after { content: ""; position: absolute; inset: auto 0 0 0; height: 72px; background: linear-gradient(transparent, rgb(255 255 255 / .55)); pointer-events: none; }
+#checks .panel:has(.nbw)::after { content: ""; position: absolute; inset: auto 0 0 0; height: 72px; background: linear-gradient(transparent, rgb(255 255 255 / .55)); pointer-events: none; }
 /* hero: the running prompt */
 .nbw .is-run { color: #1d46ad; }
 
@@ -127,4 +127,11 @@
   .nbw .rep__out, .nbw .nbw__line { padding-left: 34px; }
   #checks .panel .nbw { left: 14px; right: 14px; top: 20px; }
   .pg__out { font-size: 12px; line-height: 18px; }
+}
+/* the card's painted ground is a canvas that can land on top on phones: keep the notebook above it */
+#checks .panel .nbw { z-index: 3; }
+#checks .panel:has(.nbw)::after { z-index: 4; }
+@media (max-width: 639px) {
+  .nbw .rep__in { grid-template-columns: 42px minmax(0, 1fr); }
+  .nbw .rep__out, .nbw .nbw__line { padding-left: 42px; }
 }
