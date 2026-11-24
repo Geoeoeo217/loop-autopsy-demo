@@ -176,3 +176,56 @@
   .hero--collage .hero__art { height: auto !important; min-height: 0 !important; padding: 16px; }
   .hero__art > .ly-piece--main { position: relative !important; left: auto !important; top: auto !important; right: auto !important; width: 100% !important; z-index: 2; }
 }
+
+/* ===== every output box keeps a fixed size and scrolls inside (replaces the "grow to fit" rules) ===== */
+.nbw__body, .app__pane, .pg__out {
+  overflow-y: auto !important; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; scrollbar-color: rgb(0 0 0 / .28) transparent;
+}
+.nbw__body::-webkit-scrollbar, .app__pane::-webkit-scrollbar, .pg__out::-webkit-scrollbar { width: 8px; }
+.nbw__body::-webkit-scrollbar-thumb, .app__pane::-webkit-scrollbar-thumb, .pg__out::-webkit-scrollbar-thumb { background: rgb(0 0 0 / .25); border-radius: 4px; }
+.nbw { display: flex; flex-direction: column; }
+.nbw__bar { flex: none; }
+.nbw__body { flex: 1 1 auto; min-height: 0; }
+
+/* hero: the notebook fills its frame with a margin on every side; its body scrolls */
+.hero__art > .ly-piece--main { top: var(--s-6) !important; bottom: var(--s-6) !important; left: var(--s-6) !important; right: var(--s-6) !important; width: auto !important; }
+.hero__art > .ly-piece--main > .nbw { height: 100%; }
+@media (max-width: 639px) {
+  .hero--collage .hero__art { height: 520px !important; min-height: 520px !important; padding: 0 !important; }
+  .hero__art > .ly-piece--main { position: absolute !important; top: 14px !important; bottom: 14px !important; left: 14px !important; right: 14px !important; }
+}
+
+/* report section: the window keeps one height; each pane scrolls */
+#report .app.fill { height: 620px !important; flex: none; }
+#report .app > .app__pane::after { display: none; }
+#report .app > .app__pane--list { max-height: none !important; }
+@media (max-width: 1023px) { #report .app.fill { height: 560px !important; } #report .app.ui { grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); } }
+@media (max-width: 639px) { #report .app.fill { height: 520px !important; } #report .app.ui { grid-template-rows: minmax(0, 1fr); } }
+
+/* feature cards: one panel height; the notebook sits inside it and scrolls */
+#checks .panel:has(.nbw) { height: 440px !important; padding: 0 !important; display: block; position: relative; }
+#checks .panel .nbw { position: absolute !important; inset: 24px !important; }
+@media (max-width: 639px) { #checks .panel:has(.nbw) { height: 400px !important; } #checks .panel .nbw { inset: 14px !important; } }
+
+/* playground: the output keeps one height and scrolls */
+.pg__out { max-height: 460px !important; }
+@media (max-width: 639px) { .pg__out { max-height: 380px !important; } }
+
+/* dynamic boundaries: each box takes a share of the screen's height (with a floor and a ceiling),
+   so it fits any device, and its content scrolls inside */
+#report .app.fill { height: clamp(360px, 72vh, 700px) !important; height: clamp(360px, 72svh, 700px) !important; }
+#checks .panel:has(.nbw) { height: clamp(320px, 55vh, 540px) !important; height: clamp(320px, 55svh, 540px) !important; }
+.pg__out { max-height: clamp(260px, 55vh, 580px) !important; max-height: clamp(260px, 55svh, 580px) !important; }
+.pg__in textarea { max-height: 45vh; max-height: 45svh; }
+@media (max-width: 1023px) {
+  #report .app.fill { height: clamp(360px, 70vh, 640px) !important; height: clamp(360px, 70svh, 640px) !important; }
+}
+@media (max-width: 639px) {
+  .hero--collage .hero__art { height: clamp(340px, 62vh, 560px) !important; height: clamp(340px, 62svh, 560px) !important; min-height: 0 !important; }
+  #report .app.fill { height: clamp(340px, 68vh, 600px) !important; height: clamp(340px, 68svh, 600px) !important; }
+  #checks .panel:has(.nbw) { height: clamp(300px, 58vh, 500px) !important; height: clamp(300px, 58svh, 500px) !important; }
+  .pg__out { max-height: clamp(240px, 55vh, 480px) !important; max-height: clamp(240px, 55svh, 480px) !important; }
+}
+#report .app.ui { grid-template-rows: minmax(0, 1fr); }
+@media (max-width: 1023px) and (min-width: 640px) { #report .app.ui { grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); } }

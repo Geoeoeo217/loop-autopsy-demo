@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="assets/layout/demo.css">
 <script src="assets/backgrounds/backgrounds.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
-<link rel="stylesheet" href="live/live.css?v=16">
+<link rel="stylesheet" href="live/live.css?v=19">
 <!-- page CSS: only what sits inside a visual, and one --p-h per card group -->
 <style>
   /* hero collage: the note card and the window's row columns (from hero-collage.html) */
@@ -140,7 +140,7 @@
         <p class="hero__proof">Stops a stuck loop after 3 rounds. Tested on Windows, macOS and Linux.</p>
       </div>
       <div class="hero__art span-6 start-7" data-fx="grain-gradient" data-fx-seed="7" data-fx-palette='{"bg":"#c6d3df","surface":"#d6e0e9","ink":"#25303a","accent":"#3f6a92"}' data-fx-params='{"grainMotion":0}' role="img" aria-label="A notebook in which loop-autopsy stops a stuck loop and prints its report">
-        <div class="ly-piece ly-piece--main" aria-hidden="true"><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body"><div class="rep__in"><span class="rep__n"><span>[</span>1<span>]</span>:</span><div class="rep__code">%load_ext loop_autopsy</div></div><div class="nbw__line">loop-autopsy 0.4.0 is watching your loops. Type %autopsy help for options.</div><div class="rep__in"><span class="rep__n" data-hero-prompt><span>[</span>2<span>]</span>:</span><div class="rep__code">count = <span class="m">1</span>
+        <div class="ly-piece ly-piece--main" aria-hidden="true"><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body" data-lenis-prevent tabindex="0"><div class="rep__in"><span class="rep__n"><span>[</span>1<span>]</span>:</span><div class="rep__code">%load_ext loop_autopsy</div></div><div class="nbw__line">loop-autopsy 0.4.0 is watching your loops. Type %autopsy help for options.</div><div class="rep__in"><span class="rep__n" data-hero-prompt><span>[</span>2<span>]</span>:</span><div class="rep__code">count = <span class="m">1</span>
 <span class="k">while</span> count &lt;= <span class="m">5</span>:
     <span class="k">print</span>(count)</div></div><div class="nbw__line" data-hero-print>1
 1</div><div class="rep__box" data-hero-report><span class="t">Loop autopsy — stuck loop (line 2)</span>
@@ -168,7 +168,7 @@ round  count (same)
         <p class="span-6 start-7">The report names the line, shows the last rounds as evidence and ends with a hint for the fix. Correct loops get no report at all. <a class="link" href="https://github.com/Geoeoeo217/loop-autopsy">See the code on GitHub</a></p>
       </div>
       <div class="ui app fill" role="img" aria-label="Two real loop-autopsy reports from one notebook: a list that keeps growing and a stuck loop">
-        <div class="app__pane app__pane--list"><div class="ui ui-panel rep"><div class="rep__head"><b>Cell <span>[</span>4<span>]</span></b><span>homework.ipynb · line 2</span><span class="rep__chip">Growing list</span></div><div class="rep__in"><span class="rep__n"><span>[</span>4<span>]</span>:</span><div class="rep__code">nums = [<span class="m">1</span>, <span class="m">2</span>]
+        <div class="app__pane app__pane--list" data-lenis-prevent tabindex="0"><div class="ui ui-panel rep"><div class="rep__head"><b>Cell <span>[</span>4<span>]</span></b><span>homework.ipynb · line 2</span><span class="rep__chip">Growing list</span></div><div class="rep__in"><span class="rep__n"><span>[</span>4<span>]</span>:</span><div class="rep__code">nums = [<span class="m">1</span>, <span class="m">2</span>]
 <span class="k">for</span> n <span class="k">in</span> nums:
     nums.append(n)</div></div><div class="rep__box"><span class="t">Loop autopsy — loop over a list that keeps growing (line 2)</span>
     for n in nums:
@@ -186,7 +186,7 @@ round  nums            n (same)
 2,008  list(len=2009)  2
 
 <span class="h">Hint: Loop over a copy (`for ... in nums<span>[</span>:<span>]</span>:`) or put new items in a separate list.</span></div></div></div>
-        <div class="app__pane app__pane--open">
+        <div class="app__pane app__pane--open" data-lenis-prevent tabindex="0">
           <div class="ui ui-panel rep">
             <div class="rep__head"><b>Cell <span>[</span>2<span>]</span></b><span>homework.ipynb · line 2</span><span class="rep__chip">Stuck loop</span></div>
             <div class="rep__in"><span class="rep__n"><span>[</span>2<span>]</span>:</span><div class="rep__code">count = <span class="m">1</span>
@@ -291,7 +291,7 @@ round  count (same)
           <article class="card card--row card--open span-6">
             <h3>Names the variable that broke</h3>
             <p>Each report names the variable, shows its last values and gives one fix, such as count += 1.</p>
-            <div class="panel" data-fx="gradient-mesh" data-fx-seed="21" data-fx-palette='{"bg":"#d9ccb7","surface":"#e9e0d2","ink":"#2a2622","accent":"#a8794a"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body"><div class="rep__in"><span class="rep__n"><span>[</span>6<span>]</span>:</span><div class="rep__code">i = <span class="m">10</span>
+            <div class="panel" data-fx="gradient-mesh" data-fx-seed="21" data-fx-palette='{"bg":"#d9ccb7","surface":"#e9e0d2","ink":"#2a2622","accent":"#a8794a"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body" data-lenis-prevent tabindex="0"><div class="rep__in"><span class="rep__n"><span>[</span>6<span>]</span>:</span><div class="rep__code">i = <span class="m">10</span>
 <span class="k">while</span> i &gt; <span class="m">0</span>:
     i += <span class="m">1</span></div></div><div class="rep__box"><span class="t">Loop autopsy — loop moving the wrong way (line 2)</span>
     while i &gt; 0:
@@ -316,7 +316,7 @@ round  i
         <article class="card card--row card--open span-6">
           <h3>Guards memory and time</h3>
           <p>It stops a loop before the kernel runs out of memory and warns early when a loop will pass 60 s.</p>
-          <div class="panel" data-fx="gradient-mesh" data-fx-seed="34" data-fx-palette='{"bg":"#c6d3df","surface":"#d6e0e9","ink":"#25303a","accent":"#3f6a92"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body"><div class="rep__in"><span class="rep__n"><span>[</span>7<span>]</span>:</span><div class="rep__code">%autopsy config time_limit=<span class="m">120</span></div></div><div class="nbw__line">time_limit = 120.0</div><div class="rep__in"><span class="rep__n"><span>[</span>8<span>]</span>:</span><div class="rep__code">%autopsy reset</div></div><div class="nbw__line">Settings are back to their defaults:
+          <div class="panel" data-fx="gradient-mesh" data-fx-seed="34" data-fx-palette='{"bg":"#c6d3df","surface":"#d6e0e9","ink":"#25303a","accent":"#3f6a92"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body" data-lenis-prevent tabindex="0"><div class="rep__in"><span class="rep__n"><span>[</span>7<span>]</span>:</span><div class="rep__code">%autopsy config time_limit=<span class="m">120</span></div></div><div class="nbw__line">time_limit = 120.0</div><div class="rep__in"><span class="rep__n"><span>[</span>8<span>]</span>:</span><div class="rep__code">%autopsy reset</div></div><div class="nbw__line">Settings are back to their defaults:
   time_limit       120.0 -&gt; 60.0</div><div class="rep__in"><span class="rep__n"><span>[</span>9<span>]</span>:</span><div class="rep__code">%autopsy</div></div><div class="nbw__line">loop-autopsy is ON. Settings:
   time_limit       60.0
   estimate_after   5.0
@@ -329,7 +329,7 @@ round  i
         <article class="card card--row card--open span-6">
           <h3>Catches runaway recursion</h3>
           <p>A function that calls itself with the same argument is caught, with its first and last calls side by side.</p>
-          <div class="panel" data-fx="gradient-mesh" data-fx-seed="55" data-fx-palette='{"bg":"#cdd6c6","surface":"#dce3d6","ink":"#262d24","accent":"#6c8e63"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body"><div class="rep__in"><span class="rep__n"><span>[</span>10<span>]</span>:</span><div class="rep__code"><span class="k">def</span> f(n):
+          <div class="panel" data-fx="gradient-mesh" data-fx-seed="55" data-fx-palette='{"bg":"#cdd6c6","surface":"#dce3d6","ink":"#262d24","accent":"#6c8e63"}' data-fx-params='{"speed":0,"drift":0,"calmY":0.95}'><div class="nbw"><div class="nbw__bar"><i></i><i></i><i></i><b>homework.ipynb</b></div><div class="nbw__body" data-lenis-prevent tabindex="0"><div class="rep__in"><span class="rep__n"><span>[</span>10<span>]</span>:</span><div class="rep__code"><span class="k">def</span> f(n):
     <span class="k">return</span> f(n)
 
 f(<span class="m">3</span>)</div></div><div class="rep__box"><span class="t">Loop autopsy — recursion stuck on the same arguments (line 1)</span>
